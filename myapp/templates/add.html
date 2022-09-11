@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-3">
+        <h2 class="text-center alert alert-danger">Add Student</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Add Students">
+        </form>
+    </div>
+    <div class="col-sm-9">
+        <h2 class="text-center alert alert-danger">
+            Studnets Detail Information
+        </h2>
+        {% if Students %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Roll No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Middle</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Mobile Number</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Password</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+             {% for stu in Students %}
+                <tr>
+                    <td>{{stu.rollno}}</td>
+                    <td>{{stu.name}}</td>
+                    <td>{{stu.middle}}</td>
+                    <td>{{stu.surname}}</td>
+                    <td>{{stu.mobileno}}</td>
+                    <td>{{stu.email}}</td>
+                    <td>{{stu.address}}</td>
+                    <td>{{stu.password}}</td>
+                    <td><a class="btn btn-primary" href="{% url 'updatedata' stu.id %}" role="button">Edit</a> 
+                    <form action="{% url 'deletedata' stu.id %}" class="d-inline" method="POST">{% csrf_token %}
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                    </td>
+                </tr>
+             {% endfor %}
+            </tbody>
+          </table>
+        
+        {% else %}
+        <h2>No data Found</h2>
+        {% endif %}
+    </div>
+    
+</div>
+{% endblock content %}
+

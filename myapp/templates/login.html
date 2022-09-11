@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block signin %}
+<body class="text-center">    
+  <main class="form-signin w-100 m-auto">
+    <form action="" method="POST" novalidate class="shadow col-6 p-5 vertical-2 m-auto"> 
+      <img class="mb-4" src="{% static 'images/handbag.svg' %}" alt="" width="120" height="90">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1><br>
+      <p></p>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <p></p>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+      <p></p>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <p></p>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+    </form>
+  </main> 
+  </body>
+{% endblock signin %}
+
